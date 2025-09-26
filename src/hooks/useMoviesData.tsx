@@ -22,7 +22,7 @@ export const getGenreMovies = async () => {
   return await api
     .get(baseUrl('genre/movie/list?language=pt-br'))
     .then((response) => {
-      return response;
+      return response?.data;
     })
     .catch((error) => {
       throw error;

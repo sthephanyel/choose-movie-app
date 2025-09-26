@@ -30,7 +30,15 @@ function App() {
         <NavigationContainer>
           <PersistGate persistor={persistor}>
             <SafeAreaProvider>
-              <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+              {/* <StatusBar
+                animated={true}
+                backgroundColor={'#1C0F13'}
+                translucent={true}
+                // backgroundColor={isDarkMode ? '#1C0F13' : '#1C0F13'}
+                barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+                // hidden
+                /> */}
+                <StatusBar backgroundColor={"#1C0F13"}  barStyle={'dark-content'} />
               <Routes/>
             </SafeAreaProvider>
           </PersistGate>
