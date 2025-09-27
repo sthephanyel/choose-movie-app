@@ -13,7 +13,7 @@ export const api: AxiosInstance = Axios.create({
 api.interceptors.request.use(async (config) => {
 //   const token = await storageService.getItem<string>("token");
   if (true) {
-    config.headers.Authorization = "Bearer " + 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NWM2MjcyZGM0OTRmYmM4MTY1NDM3ZGQ1ZmU2NDVkYSIsIm5iZiI6MTYzMjU5MTUwMS40ODUsInN1YiI6IjYxNGY1ZThkYTliOWE0MDA0MzU2M2ExOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wNYh2BY2ySxaUtDxcux1j6tbXVBf8mF6SkrsFU6Sw7A';
+    config.headers.Authorization = "Bearer " + '';
   }
   return config;
 });
