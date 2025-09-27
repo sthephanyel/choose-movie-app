@@ -38,7 +38,7 @@ function App() {
                 barStyle={isDarkMode ? 'light-content' : 'dark-content'}
                 // hidden
                 /> */}
-                <StatusBar backgroundColor={"#1C0F13"}  barStyle={'dark-content'} />
+                <StatusBar translucent={false} backgroundColor={"#1C0F13"}  barStyle={'dark-content'} />
               <Routes/>
             </SafeAreaProvider>
           </PersistGate>

@@ -1,11 +1,13 @@
 import React, {useEffect, useMemo, useState} from 'react';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import { SafeAreaView, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import { RootState } from '../../redux/store/index';
 // import { getGenreMovies } from '../../../src/hooks/useMoviesData';
 import { useQuery } from "@tanstack/react-query";
 import { getGenreMovies } from '@hooks/useMoviesData';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
 interface HomeProps {
   navigation: NativeStackNavigationProp<any, 'home'>;
 }
