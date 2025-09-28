@@ -34,22 +34,22 @@ export default function Home({navigation}: HomeProps) {
             style={{backgroundColor: 'blue', width: 274, height: 68, justifyContent: 'center', alignItems: 'center', borderRadius: 10}}
             onPress={() => {
               navigation.navigate('genres');
-            }}>
-              <View style={[styles.container, {}]}>
-                <Text style={{fontSize: 24, fontWeight: 500}}>
-                  {homeObj.button_text}
-                </Text>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity
-            style={{backgroundColor: 'gray', width: '100%', justifyContent: 'center', alignItems: 'center'}}
-            onPress={() => {}}>
-              <View style={[styles.container, {}]}>
-                <Text>
-                  {homeObj.link_text}
-                </Text>
-              </View>
-            </TouchableOpacity>
+          }}>
+            <View style={[styles.container, {}]}>
+              <Text style={{fontSize: 24, fontWeight: 500}}>
+                {homeObj.button_text}
+              </Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity
+          style={{backgroundColor: 'gray', width: '100%', justifyContent: 'center', alignItems: 'center'}}
+          onPress={() => {}}>
+            <View style={[styles.container, {}]}>
+              <Text>
+                {homeObj.link_text}
+              </Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </BackgroundDefault>
     )

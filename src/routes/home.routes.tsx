@@ -37,7 +37,7 @@ export function HomeRoutes({ navigation, route }: any) {
       initialRouteName={"home"}
     >
       <Stack.Screen name="home" options={{ headerShown: false }} component={Home} />
-      <Stack.Screen name="genres" component={Genres} />
+      <Stack.Screen name="genres" options={{ headerShown: false }} component={Genres} />
       {/* <Stack.Screen name="chat" component={Chat} />
       <Stack.Screen name="userdetails" component={UserDetails} /> */}
     </Stack.Navigator>
