@@ -65,39 +65,50 @@ const BackgroundDefault = forwardRef<BackgroundDefaultRef, { children?: React.Re
   const translateXShared = useRef(circuls.map(c => useSharedValue(c.translateX))).current;
 
   useImperativeHandle(ref, () => ({
-    moveCircle(index: number, newTop?: number, newBottom?: number, translateY?: number, newTranslateX?: number) {
+    moveCircle(
+      index: number, 
+      newTop?: number, 
+      newBottom?: number, 
+      translateY?: number, 
+      newTranslateX?: number
+    ) {
       if (newTop !== undefined && newTop !== 0){
-        topShared[index].value = withTiming(newTop, { duration: 500 }, () => {
-          translateXShared[index].value = translateY !== undefined && translateY !== 0 ? withSpring(translateY): 0;
-          translateXShared[index].value = newTranslateX !== undefined && newTranslateX !== 0 ? withSpring(newTranslateX): 0;
-          topShared[index].value = withRepeat(
-              withTiming(newTop + 10, { duration: 2000 }),
+        topShared[index].value = withTiming(newTop, { duration: 500 }, (finished) => {
+          if (finished) {
+            topShared[index].value = withDelay(0, withRepeat(
+              withTiming(newTop + 10, { duration }),
               -1,
               true
-            );
+            ))
+          }
           }
         );
       }
 
       if (newBottom !== undefined && newBottom !== 0){
-        bottomShared[index].value = withTiming(newBottom, { duration: 500 }, () => {
-          translateXShared[index].value = translateY !== undefined && translateY !== 0 ? withSpring(translateY): 0;
-          translateXShared[index].value = newTranslateX !== undefined && newTranslateX !== 0 ? withSpring(newTranslateX): 0;
-          bottomShared[index].value = withRepeat(
-              withTiming(newBottom + 10, { duration: 2000 }),
-              -1,
-              true
-            );
+        bottomShared[index].value = withTiming(newBottom, { duration: 500 }, (finished) => {
+            if (finished) {
+              bottomShared[index].value = withDelay(0, withRepeat(
+                withTiming(newBottom + 10, { duration }),
+                -1,
+                true
+              ));
+            }
           }
         );
+      }
+
+      if ( translateY !== undefined && translateY !== 0 ) {
+        translateXShared[index].value = withTiming(translateY, { duration: 500 });
+      }
+
+      if (newTranslateX !== undefined && newTranslateX !== 0) {
+        translateXShared[index].value = withTiming(newTranslateX, { duration: 500 });
       }
     },
   }));
 
   function AnimatedBox(i:any ,index: number){
-    // const top_shared = useSharedValue(i.top);
-    // const bottom_shared = useSharedValue(i.bottom);
-
     const animatedStyleTop = useAnimatedStyle(() => ({
       top: topShared[index].value ?topShared[index].value : null
       , transform: [
@@ -151,7 +162,7 @@ const BackgroundDefault = forwardRef<BackgroundDefaultRef, { children?: React.Re
               {
                 width: i.width, 
                 height: i.height, 
-                backgroundColor: 'blue', 
+                backgroundColor: 'yellow', 
                 borderRadius: 100,
                 top: i.top == 0 ? null : percentToPx(`${i.top}`, height, index),
                 right: i.right == 0 ? null : percentToPx(`${i.right}`, width, index),
